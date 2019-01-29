@@ -1,32 +1,220 @@
-.App {
-  text-align: center;
+#hero_imgs{
+  position: fixed;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+#hero_2_animation{
+  animation: 1.5s ease-out 0s 1 hero_2;
+}
+#hero_1_animation{
+  animation: 1.5s ease-out 0s 1 hero_1;
+}
+.hero_2 {
+  position:absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hero_1 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
+}
+#logo_full{
+  position: fixed;
+  top:0;
+  left:0;
+  padding-left: 2%;
+  width:25%;
+}
+#discover{
+  animation: 1.5s ease-out 0s 1 slideupdiscover;
+  position: absolute;
+  right:4%;
+  bottom:50%;
+  font-size: 1000%;
+  background-image:-webkit-linear-gradient(
+    top,
+    rgba(106,170,215,1) 0%,
+    rgba(106,169,215,0.23) 54%,
+    rgba(101,176,224,0) 70%,
+    rgba(93,189,240,0) 100%); /* Chrome10+,Safari5.1+ */
+  color: transparent;
+  -webkit-background-clip: text;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+#hamburger{
+  fill: white;
+  top: 3%;
+  right: 3%;
+  position: fixed;
+  width:2%;
 }
+#menuToggle{
+  display: block;
+  position: fixed;
+  top: 3%;
+  right: 3%;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 1;
+
+  -webkit-user-select: none;
+  user-select: none;
 }
+#menuToggle input{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: 3%;
+  right: 3%;
 
-.App-link {
-  color: #61dafb;
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
 }
+#menuToggle span{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  background: rgba(106,170,215,1);
+  border-radius: 3px;
+
+  z-index: 1;
+
+  transform-origin: 4px 0px;
+
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+#menuToggle span:first-child{
+  transform-origin: 0% 0%;
+}
+#menuToggle span:nth-last-child(2){
+  transform-origin: 0% 100%;
+}
+#menuToggle input:checked ~ span{
+  opacity: 1;
+  transform: rotate(45deg) translate(-13px, -14px);
+  background: white;
+}
+#menuToggle input:checked ~ span:nth-last-child(3){
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+#menuToggle input:checked ~ span:nth-last-child(2){
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+#social_media{
+  position: fixed;
+  bottom:2%;
+  right:3%;
+  width:10%;
+}
+.scroll-indicator{
+  position: fixed;
+  bottom: 2%;
+  right:50%;
+  width: 50px;
+  height: 50px;
+  margin: 16px auto;
+  border-right: 3px solid #FFF;
+  border-bottom: 3px solid #FFF;
+  border-bottom-right-radius: 2px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+  -webkit-animation-name: fade;
+          animation-name: fade;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+#scroll_bar{
+  width: 0;
+  position: fixed;
+  height: 8px;
+  top: 15%;
+  left: 0;
+  background: white;
+}
+@-webkit-keyframes fade {
+  0% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    opacity: 1;
   }
-  to {
-    transform: rotate(360deg);
+  75% {
+    -webkit-transform: rotate(45deg) translateY(-6px) translateX(-6px);
+            transform: rotate(45deg) translateY(-6px) translateX(-6px);
+    opacity: 0;
   }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade {
+  0% {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: rotate(45deg) translateY(-6px) translateX(-6px);
+            transform: rotate(45deg) translateY(-6px) translateX(-6px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes slideupdiscover {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes hero_2 {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+@keyframes hero_1 {
+  0% {
+    transform: scale(.9);
+    transform: translateY(2%);
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+
+ #opacity_layer{
+   position: absolute;
+   background-color: black;
+   width: 100%;
+   height: 200vh;
+   opacity: .5;
+ }
+ #myVideo {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
